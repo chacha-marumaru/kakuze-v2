@@ -2,17 +2,19 @@
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import Breadcrumb from '~/components/Breadcrumb.astro';
 
+const description = 'KAKUZEの使い方を詳しく解説。タイマー設定から画像管理まで';
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "使い方ガイド | KAKUZE",
-  "description": "KAKUZEの使い方を詳しく解説。タイマー設定から画像管理まで。",
+  "description": description,
   "url": "https://kakuze-v2.vercel.app/guide"
 };
 ---
 <BaseLayout
   title="使い方ガイド | KAKUZE"
-  description="KAKUZEの使い方を詳しく解説。タイマー設定から画像管理まで。"
+  description={description}
   jsonLd={jsonLd}
 >
   <Breadcrumb items={[{ label: 'ホーム', href: '/' }, { label: '使い方ガイド' }]} />
@@ -28,7 +30,7 @@ const jsonLd = {
 
     <h2>2. 時間・枚数の設定</h2>
     <p>
-      タイマーの時間は1秒から無制限まで自由に設定できます。初心者には30秒〜2分程度がおすすめです。短い時間で集中して描くことで、全体のバランスや動きを捉える感覚が身につきます。枚数は1枚から9999万枚まで設定可能です。「毎日30枚」といった目標を立てて継続するのが上達の近道です。設定画面では「セット数」と「1セットあたりの枚数」を別々に指定できるため、たとえば「5分×3セット」のような構成でインターバル練習も行えます。設定は自動保存されるので、次回以降も同じ設定で始められます。
+      タイマーの時間は1秒〜無制限まで自由に設定できます。初心者には30秒〜2分程度がおすすめです。短い時間で集中して描くことで、全体のバランスや動きを捉える感覚が身につきます。枚数は1枚から9999万枚まで設定可能です。「毎日30枚」といった目標を立てて継続するのが上達の近道です。設定画面では「セット数」と「1セットあたりの枚数」を別々に指定できるため、たとえば「5分×3セット」のような構成でインターバル練習も行えます。設定は自動保存されるので、次回以降も同じ設定で始められます。
     </p>
 
     <h2>3. 各モードの説明</h2>
