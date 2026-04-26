@@ -1,0 +1,147 @@
+---
+interface Props {
+  name?: string;
+  bio?: string;
+  avatarSrc?: string;
+  twitterUrl?: string;
+  links?: { label: string; href: string }[];
+}
+
+const {
+  name = 'へんしゅうちょ',
+  bio = 'お絵描き練習が好き。KAKUZEを作った人。',
+  avatarSrc = '/images/author-avatar.png',
+  twitterUrl,
+  links = [],
+} = Astro.props;
+
+// イニシャルを取得（名前の最初の1文字）
+const initial = name.charAt(0);
+
+// すべてのリンクをまとめる（Twitter + カスタムリンク）
+const allLinks = [
+  ...(twitterUrl ? [{ label: 'X (Twitter)', href: twitterUrl }] : []),
+  ...links,
+];
+---
+
+<section class="author-card" aria-label="著者情報">
+  <div class="author-card__avatar-wrap">
+    <img
+      class="author-card__avatar"
+      src={avatarSrc}
+      alt={`${name} のアバター`}
+      width="72"
+      height="72"
+      loading="lazy"
+      decoding="async"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+    />
+    <div class="author-card__avatar-fallback" aria-hidden="true">
+      {initial}
+    </div>
+  </div>
+
+  <div class="author-card__body">
+    <p class="author-card__name">{name}</p>
+    <p class="author-card__bio">{bio}</p>
+    {allLinks.length > 0 && (
+      <ul class="author-card__links">
+        {allLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="author-card__link"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+</section>
+
+<style>
+  .author-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-6);
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-subtle);
+  }
+
+  .author-card__avatar-wrap {
+    flex-shrink: 0;
+    position: relative;
+    width: 72px;
+    height: 72px;
+  }
+
+  .author-card__avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--radius-pill);
+    object-fit: cover;
+  }
+
+  .author-card__avatar-fallback {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    user-select: none;
+  }
+
+  .author-card__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .author-card__name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-base);
+    color: var(--color-text);
+    margin-bottom: var(--space-2);
+  }
+
+  .author-card__bio {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: var(--leading-base);
+    margin-bottom: var(--space-3);
+  }
+
+  .author-card__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .author-card__link {
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: opacity var(--duration-fast) var(--ease-standard);
+  }
+
+  .author-card__link:hover {
+    opacity: 0.75;
+    text-decoration: underline;
+  }
+</style>
