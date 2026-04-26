@@ -1,0 +1,130 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumb from '~/components/Breadcrumb.astro';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "お問い合わせ | KAKUZE",
+  "description": "KAKUZEへのお問い合わせはこちら。",
+  "url": "https://kakuze-v2.vercel.app/contact"
+};
+---
+<BaseLayout
+  title="お問い合わせ | KAKUZE"
+  description="KAKUZEへのお問い合わせはこちら。"
+  jsonLd={jsonLd}
+>
+  <Breadcrumb items={[{ label: 'ホーム', href: '/' }, { label: 'お問い合わせ' }]} />
+  <div class="prose-page container">
+    <h1>お問い合わせ</h1>
+    <p>ご質問・ご要望・不具合報告はこちらからどうぞ。返信まで数日いただく場合があります。</p>
+
+    <!-- ⚠️ TODO: Formspree または自前のフォームサービスの URL を設定してください -->
+    <form
+      method="POST"
+      action="https://formspree.io/f/XXXXXXXXXX"
+      class="contact-form"
+      novalidate
+    >
+      <div class="form-field">
+        <label for="contact-name">お名前 <span aria-hidden="true">*</span></label>
+        <input id="contact-name" type="text" name="name" required autocomplete="name" />
+      </div>
+      <div class="form-field">
+        <label for="contact-email">メールアドレス <span aria-hidden="true">*</span></label>
+        <input id="contact-email" type="email" name="email" required autocomplete="email" />
+      </div>
+      <div class="form-field">
+        <label for="contact-subject">件名 <span aria-hidden="true">*</span></label>
+        <input id="contact-subject" type="text" name="subject" required />
+      </div>
+      <div class="form-field">
+        <label for="contact-message">メッセージ <span aria-hidden="true">*</span></label>
+        <textarea id="contact-message" name="message" rows="6" required></textarea>
+      </div>
+      <button type="submit" class="btn-primary">送信する</button>
+    </form>
+  </div>
+</BaseLayout>
+
+<style>
+  .prose-page {
+    padding-block: var(--space-12) var(--space-16);
+  }
+
+  .prose-page h1 {
+    font-size: var(--text-3xl);
+    margin-block-end: var(--space-6);
+  }
+
+  .prose-page > p {
+    max-width: 42rem;
+    line-height: var(--leading-loose);
+    color: var(--color-text-muted);
+    margin-block-end: var(--space-8);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    max-width: 42rem;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .form-field label {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .form-field input,
+  .form-field textarea {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: var(--text-base);
+    width: 100%;
+    transition: border-color var(--duration-fast) var(--ease-standard);
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 0;
+    border-color: var(--color-accent);
+  }
+
+  .form-field textarea {
+    resize: vertical;
+    min-height: 8rem;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    align-self: flex-start;
+    padding: var(--space-3) var(--space-8);
+    background: var(--color-accent);
+    color: var(--color-paper);
+    border-radius: var(--radius-md);
+    font-size: var(--text-base);
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    transition: opacity var(--duration-fast) var(--ease-standard);
+  }
+
+  .btn-primary:hover {
+    opacity: 0.85;
+    color: var(--color-paper);
+  }
+</style>
