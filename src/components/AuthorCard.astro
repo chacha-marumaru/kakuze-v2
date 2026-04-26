@@ -27,19 +27,18 @@ const allLinks = [
 
 <section class="author-card" aria-label="著者情報">
   <div class="author-card__avatar-wrap">
+    <!-- イニシャル円は常にレンダリング（画像ロード失敗時のフォールバック） -->
+    <span class="author-card__avatar-initial" aria-hidden="true">{initial}</span>
+    <!-- 画像が存在する場合はイニシャル円の上に重なって表示 -->
     <img
-      class="author-card__avatar"
+      class="author-card__avatar-img"
       src={avatarSrc}
       alt={`${name} のアバター`}
       width="72"
       height="72"
       loading="lazy"
       decoding="async"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
     />
-    <div class="author-card__avatar-fallback" aria-hidden="true">
-      {initial}
-    </div>
   </div>
 
   <div class="author-card__body">
@@ -80,28 +79,37 @@ const allLinks = [
     position: relative;
     width: 72px;
     height: 72px;
-  }
-
-  .author-card__avatar {
-    width: 72px;
-    height: 72px;
     border-radius: var(--radius-pill);
-    object-fit: cover;
-  }
-
-  .author-card__avatar-fallback {
-    display: none;
+    background-color: var(--color-accent-soft);
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 72px;
-    height: 72px;
-    border-radius: var(--radius-pill);
-    background: var(--color-accent-soft);
-    color: var(--color-accent);
+    overflow: hidden;
+  }
+
+  /* イニシャル円（画像ロード失敗時に見える） */
+  .author-card__avatar-initial {
     font-family: var(--font-display);
     font-size: var(--text-xl);
     font-weight: 700;
+    color: var(--color-accent);
     user-select: none;
+    position: relative;
+    z-index: 0;
+  }
+
+  /* 画像が読み込まれた場合はイニシャル円の上を覆う */
+  .author-card__avatar-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-pill);
+    z-index: 1;
+    /* 読み込み失敗時の壊れた画像アイコン・altテキストを非表示 */
+    color: transparent;
+    font-size: 0;
   }
 
   .author-card__body {

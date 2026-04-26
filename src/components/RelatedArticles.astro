@@ -26,23 +26,25 @@ function formatDate(date: Date): string {
 ---
 
 <aside class="related-articles">
-  <h2 class="related-articles__heading">関連記事</h2>
   {relatedPosts.length > 0 && (
-    <ul class="related-articles__list">
-      {relatedPosts.map((post) => (
-        <li class="related-articles__item">
-          <a href={`/blog/${post.slug}`} class="related-articles__link">
-            {post.data.title}
-          </a>
-          <time
-            class="related-articles__date"
-            datetime={post.data.pubDate.toISOString()}
-          >
-            {formatDate(post.data.pubDate)}
-          </time>
-        </li>
-      ))}
-    </ul>
+    <>
+      <h2 class="related-articles__heading">関連記事</h2>
+      <ul class="related-articles__list">
+        {relatedPosts.map((post) => (
+          <li class="related-articles__item">
+            <a href={`/blog/${post.slug}`} class="related-articles__link">
+              {post.data.title}
+            </a>
+            <time
+              class="related-articles__date"
+              datetime={post.data.pubDate.toISOString()}
+            >
+              {formatDate(post.data.pubDate)}
+            </time>
+          </li>
+        ))}
+      </ul>
+    </>
   )}
 </aside>
 
