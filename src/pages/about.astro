@@ -1,0 +1,368 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumb from '~/components/Breadcrumb.astro';
+import AuthorCard from '~/components/AuthorCard.astro';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "クロッキーとは？絵の上達に効果的な短時間スケッチ練習法",
+  "description": "クロッキーの語源・歴史・効果・正しい練習方法を徹底解説します。",
+  "datePublished": "2026-04-26",
+  "author": {
+    "@type": "Person",
+    "name": "へんしゅうちょ",
+    "url": "https://kakuze-v2.vercel.app/about-us"
+  }
+};
+---
+
+<BaseLayout
+  title="クロッキーとは？絵の上達に効果的な短時間スケッチ練習法"
+  description="クロッキーの語源・歴史・効果・正しい練習方法を徹底解説します。短時間スケッチで観察力・線の確かさを鍛えるメソッドを紹介。"
+  jsonLd={jsonLd}
+>
+  <div class="about-container">
+    <Breadcrumb items={[
+      { label: 'ホーム', href: '/' },
+      { label: 'クロッキーとは' },
+    ]} />
+
+    <article class="about-article">
+      <header class="about-header">
+        <p class="about-header__eyebrow">ABOUT CROQUIS</p>
+        <h1 class="about-header__title">クロッキーとは？<br />絵の上達に効果的な<br />短時間スケッチ練習法</h1>
+        <p class="about-header__lead">
+          クロッキーは、30秒から数分という短い時間で対象を素早くスケッチする練習法です。
+          毎日続けることで観察力・手の速度・線の確かさが飛躍的に高まります。
+          このページでは、クロッキーの語源・歴史・具体的な効果・正しい練習方法を徹底的に解説します。
+        </p>
+        <div class="about-header__meta">
+          <time datetime="2026-04-26">2026年4月26日</time>
+          <span>著者：へんしゅうちょ</span>
+        </div>
+      </header>
+
+      <div class="about-body">
+
+        <section class="about-section">
+          <h2 class="about-section__heading">クロッキーの語源と意味</h2>
+          <p>
+            「クロッキー（croquis）」はフランス語に由来する言葉で、「素描」「速描」を意味します。
+            フランス語の動詞 <em>croquer</em>（ざっと描く、食べる）から派生したとされており、
+            日本では「速写」「速描き」と訳されることもあります。
+            英語圏では <em>gesture drawing</em>（ジェスチャードローイング）とほぼ同義に使われますが、
+            ニュアンスは微妙に異なります。ジェスチャードローイングが「動き・重心・エネルギーの把握」を
+            重視するのに対して、クロッキーはより広く「短時間で全体の印象を紙に落とす行為」全般を指します。
+          </p>
+          <p>
+            日本のデッサン教育では 1950 年代以降にクロッキーという語が広く普及しました。
+            美術予備校や美大の実技試験でも、クロッキーは観察力と表現速度を鍛える基礎訓練として
+            現在も重要な位置を占めています。
+          </p>
+        </section>
+
+        <section class="about-section">
+          <h2 class="about-section__heading">クロッキーの歴史</h2>
+          <p>
+            素早いスケッチの習慣は、古くはルネサンス期の巨匠たちにまで遡ります。
+            レオナルド・ダ・ヴィンチは多数の手稿に素早い人体観察のメモを残しており、
+            ミケランジェロも石膏像や生きた人体を短時間でスケッチする練習を積んでいたと伝えられています。
+          </p>
+          <p>
+            19 世紀のフランス・アカデミーでは、モデルを使ったクロッキーが正式なカリキュラムに組み込まれました。
+            当初は「コール・ド・クロッキー（cours de croquis）」と呼ばれ、5分・10分・20分などの
+            時間制限を設けて次々とポーズを変えながら描く授業形式が確立されました。
+            この形式は現代のクロッキー教室やオンライン練習ツールにもそのまま受け継がれています。
+          </p>
+          <p>
+            20 世紀後半にはアメリカで <em>Kimon Nicolaïdes</em> の著書
+            「The Natural Way to Draw」（1941）がジェスチャードローイング理論を体系化し、
+            世界中のアートスクールに影響を与えました。現代では <em>Line of Action</em> や
+            <em>SenshiStock</em> などのオンラインサービスが登場し、自宅で手軽にクロッキー練習できる
+            環境が整っています。KAKUZE もその流れを受けて誕生したタイマーツールです。
+          </p>
+        </section>
+
+        <section class="about-section">
+          <h2 class="about-section__heading">クロッキーで得られる5つの効果</h2>
+
+          <h3 class="about-section__subheading">① 観察力の向上</h3>
+          <p>
+            短時間で描こうとすると、「何を最初に捉えるか」を瞬時に判断しなければなりません。
+            繰り返すことで人体の重心・シルエット・大きなボリュームを素早く認識する観察眼が磨かれます。
+            この能力はイラスト・漫画・アニメーションなど、あらゆる絵の分野で直結して役立ちます。
+          </p>
+
+          <h3 class="about-section__subheading">② 線の確かさと速度</h3>
+          <p>
+            クロッキーは「考えすぎる間もなく手を動かす」訓練です。
+            ゆっくり描く際についてしまう「迷い線」「震え」が減り、
+            一本一本の線に意図と勢いが宿るようになります。
+            特に 30 秒クロッキーを毎日 10 枚続けると、3 ヶ月程度で線の力強さに変化を感じる人が多いです。
+          </p>
+
+          <h3 class="about-section__subheading">③ 継続しやすいメンタル形成</h3>
+          <p>
+            「完成作品を描こう」とすると心理的ハードルが上がり、絵を描くこと自体が億劫になりがちです。
+            クロッキーは「どうせ 30 秒で終わる」という前提があるため、失敗を恐れずに取り組めます。
+            結果として毎日の練習習慣が形成しやすくなり、長期的な上達につながります。
+          </p>
+
+          <h3 class="about-section__subheading">④ 構図感覚の強化</h3>
+          <p>
+            時間が限られているため、余白や画面内のバランスを無意識に最適化しようとする力が育ちます。
+            多くのクロッキーを重ねることで「どこに大きな要素を置くと締まって見えるか」という
+            構図の直感が養われ、本番の作品づくりでも活きてきます。
+          </p>
+
+          <h3 class="about-section__subheading">⑤ スランプ脱出・ウォームアップ</h3>
+          <p>
+            絵が描けないスランプ期にも、クロッキーは有効な入り口です。
+            「結果を評価しない練習」として位置づけることで、描くことへのブロックを外す効果があります。
+            また、本番の作品に入る前の 5〜10 分のウォームアップとしても多くのプロが活用しています。
+          </p>
+        </section>
+
+        <section class="about-section">
+          <h2 class="about-section__heading">クロッキーの正しい練習方法</h2>
+
+          <h3 class="about-section__subheading">時間設定の基本</h3>
+          <p>
+            初心者には <strong>30秒・1分・2分</strong> の3段階から始めることをおすすめします。
+            30秒は全体のシルエットを掴む訓練、1分はシルエット＋大まかな内部構造、
+            2分は重心・動き・表情まで描き込む練習です。
+            慣れてきたら 5分・10分と徐々に伸ばしていきましょう。
+          </p>
+          <p>
+            KAKUZE のクロッキータイマーでは 30秒・1分・5分 のプリセットを搭載しており、
+            タイマーが終了するたびに自動的に次のセッションへ進む仕組みになっています。
+            集中して描き続けることで、自然とクロッキーの量をこなせます。
+          </p>
+
+          <h3 class="about-section__subheading">参考資料・モデルの選び方</h3>
+          <p>
+            練習には <strong>人体・動物・静物</strong> など幅広いモデルを使うと効果的です。
+            人体クロッキーに特化したい場合は、無料で使える参考写真サービス（ポーズマニアックス、
+            Line of Action など）を活用しましょう。KAKUZE でもタイマーとあわせて
+            参考画像を表示する機能の追加を検討しています。
+          </p>
+
+          <h3 class="about-section__subheading">描く道具・素材</h3>
+          <p>
+            クロッキーに特別な道具は必要ありません。鉛筆・ボールペン・サインペンなど
+            手元にあるものでかまいません。ただし、素早い線を引くためにある程度「滑り」のある
+            紙と、強弱をつけやすい鉛筆（B〜2B 程度）が使い勝手よいとされています。
+            デジタルでもタブレット＋Procreate や Clip Studio Paint を使って練習する方も増えています。
+          </p>
+
+          <h3 class="about-section__subheading">枚数と頻度の目安</h3>
+          <p>
+            1日あたり <strong>10〜20枚</strong>、週5日以上継続することが上達への近道です。
+            毎日少量でも続けることが大切で、週1回まとめて描くよりも
+            毎日コツコツ描く方が観察眼の習得には効果的とされています。
+            KAKUZE の XP システムを使って記録をつけながら進めると、
+            継続の励みになるでしょう。
+          </p>
+        </section>
+
+        <section class="about-section">
+          <h2 class="about-section__heading">クロッキーとポモドーロテクニックの相性</h2>
+          <p>
+            ポモドーロテクニックとは、25分作業→5分休憩を繰り返す時間管理術です。
+            クロッキーと組み合わせると「25分間はクロッキーだけに集中する」という
+            シンプルなルールで練習の質が大幅に向上します。
+          </p>
+          <p>
+            KAKUZE はクロッキータイマーとポモドーロタイマーを一体化しており、
+            どちらの練習をしても XP（経験値）が積み上がる仕組みになっています。
+            クロッキーは 2XP/秒、ポモドーロは 1XP/秒 として換算され、
+            レベルアップすることで継続のモチベーションを保てます。
+          </p>
+          <p>
+            「今日は調子が悪い」「時間がない」という日でも、ポモドーロ1セット（25分）だけ
+            クロッキーするというハードルの低い目標を設定しやすいのがこの組み合わせのメリットです。
+          </p>
+        </section>
+
+        <section class="about-section">
+          <h2 class="about-section__heading">よくある質問（FAQ）</h2>
+
+          <dl class="faq-list">
+            <div class="faq-item">
+              <dt class="faq-item__question">Q. クロッキーは才能がないと上達しませんか？</dt>
+              <dd class="faq-item__answer">
+                A. そんなことはありません。クロッキーは反復練習で必ず上達するスキルです。
+                才能よりも継続の量と質が大切で、毎日 10 枚を 3 ヶ月続ければ
+                ほとんどの人が自分の変化を実感できます。
+              </dd>
+            </div>
+            <div class="faq-item">
+              <dt class="faq-item__question">Q. クロッキーブックは必要ですか？</dt>
+              <dd class="faq-item__answer">
+                A. 専用のクロッキーブックは使いやすくておすすめですが、
+                A4 のコピー用紙でも十分です。大切なのは道具よりも継続することです。
+              </dd>
+            </div>
+            <div class="faq-item">
+              <dt class="faq-item__question">Q. デジタルとアナログどちらがいいですか？</dt>
+              <dd class="faq-item__answer">
+                A. どちらでも効果に大きな差はありません。アナログは筆圧や素材の感触を
+                直接感じられる利点があり、デジタルは場所を選ばず練習できる利点があります。
+                自分が続けやすい環境を優先しましょう。
+              </dd>
+            </div>
+            <div class="faq-item">
+              <dt class="faq-item__question">Q. KAKUZE のタイマーは無料ですか？</dt>
+              <dd class="faq-item__answer">
+                A. はい、KAKUZE のクロッキータイマーとポモドーロタイマーは
+                完全無料でご利用いただけます。アカウント登録も不要です。
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="about-section">
+          <h2 class="about-section__heading">まとめ：今日からクロッキーを始めよう</h2>
+          <p>
+            クロッキーはシンプルながら奥深い練習法です。毎日少しずつ続けることで
+            観察力・線の確かさ・構図感覚が着実に磨かれていきます。
+            高価な道具も広い作業スペースも必要ありません。紙とペンさえあれば今すぐ始められます。
+          </p>
+          <p>
+            KAKUZE のタイマーを使えば、クロッキーとポモドーロを組み合わせて
+            楽しみながら続けられる練習環境が整います。
+            タイマーが鳴るたびに XP が積み上がり、レベルアップする達成感が
+            継続の後押しをしてくれます。
+          </p>
+          <p>
+            まずは今日、30秒クロッキーを 10 枚だけ試してみてください。
+            そのわずかな一歩が、絵の上達への大きな旅の始まりになるはずです。
+          </p>
+        </section>
+
+      </div><!-- /.about-body -->
+    </article>
+
+    <AuthorCard />
+  </div><!-- /.about-container -->
+</BaseLayout>
+
+<style>
+  .about-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-6) var(--space-16);
+  }
+
+  /* ---- header ---- */
+  .about-header {
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-12);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-8);
+  }
+
+  .about-header__eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    color: var(--color-text-subtle);
+    text-transform: uppercase;
+    margin: 0 0 var(--space-4);
+  }
+
+  .about-header__title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 900;
+    line-height: var(--leading-snug);
+    color: var(--color-ink);
+    margin: 0 0 var(--space-6);
+  }
+
+  .about-header__lead {
+    font-size: var(--text-lg);
+    line-height: var(--leading-base);
+    color: var(--color-text-muted);
+    margin: 0 0 var(--space-4);
+  }
+
+  .about-header__meta {
+    display: flex;
+    gap: var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--color-text-subtle);
+  }
+
+  /* ---- body ---- */
+  .about-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+
+  /* ---- section ---- */
+  .about-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .about-section__heading {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-ink);
+    margin: 0;
+    padding-bottom: var(--space-2);
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .about-section__subheading {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-ink);
+    margin: var(--space-4) 0 0;
+  }
+
+  .about-section p {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: var(--leading-loose);
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  /* ---- FAQ ---- */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    margin: 0;
+    padding: 0;
+  }
+
+  .faq-item {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-5) var(--space-6);
+  }
+
+  .faq-item__question {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-base);
+    color: var(--color-accent);
+    margin: 0 0 var(--space-3);
+  }
+
+  .faq-item__answer {
+    font-size: var(--text-base);
+    line-height: var(--leading-base);
+    color: var(--color-text);
+    margin: 0;
+  }
+</style>
