@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# AdSenseクローラー明示許可
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+Sitemap: https://kakuze-v2.vercel.app/sitemap-index.xml

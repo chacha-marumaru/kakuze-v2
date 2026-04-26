@@ -1,0 +1,174 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <div class="foot-col foot-col--brand">
+        <p class="foot-tagline">
+          線を引くのは、あなたの仕事。<br />
+          時間を数えるのは、KAKUZE の仕事。
+        </p>
+        <div class="foot-sns">
+          <a href="https://x.com/" aria-label="X (旧Twitter)" rel="noopener me">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18.244 2H21l-6.55 7.49L22 22h-6.79l-4.69-6.13L4.84 22H2.08l7.02-8.02L2 2h6.95l4.24 5.61L18.244 2zm-2.38 18h1.66L8.21 4h-1.7l9.354 16z" />
+            </svg>
+          </a>
+          <a href="https://www.pinterest.com/" aria-label="Pinterest" rel="noopener me">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.888-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" />
+            </svg>
+          </a>
+          <a href="/rss.xml" aria-label="RSS フィード">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <circle cx="6.18" cy="17.82" r="2.18" />
+              <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83C19.56 11.41 12.59 4.44 4 4.44zm0 5.66v2.83a6.83 6.83 0 016.83 6.83h2.83A9.66 9.66 0 004 10.1z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="foot-col" aria-label="プロダクト">
+        <h2 class="foot-heading">Product</h2>
+        <ul>
+          <li><a href="/app">アプリを使う</a></li>
+          <li><a href="/features">機能一覧</a></li>
+          <li><a href="/guide">使い方</a></li>
+          <li><a href="/about">クロッキーとは</a></li>
+        </ul>
+      </nav>
+
+      <nav class="foot-col" aria-label="ジャーナル">
+        <h2 class="foot-heading">Journal</h2>
+        <ul>
+          <li><a href="/blog">記事一覧</a></li>
+          <li><a href="/blog/start-guide">スタートガイド</a></li>
+          <li><a href="/blog/time-settings">時間設定の話</a></li>
+          <li><a href="/blog/daily-habit">続けるコツ</a></li>
+        </ul>
+      </nav>
+
+      <nav class="foot-col" aria-label="サイト情報">
+        <h2 class="foot-heading">About</h2>
+        <ul>
+          <li><a href="/about-us">運営者</a></li>
+          <li><a href="/contact">お問い合わせ</a></li>
+          <li><a href="/privacy-policy">プライバシー</a></li>
+          <li><a href="/terms">利用規約</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>&copy; {year} KAKUZE — Croquis Timer Journal.</p>
+      <p class="muted">Made in Tokyo / Editorial Light · Vol. 02</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-rule);
+    padding-block: var(--space-section-sm);
+    background: var(--color-paper-deep);
+    margin-top: var(--space-section);
+  }
+  .site-footer__inner {
+    display: grid;
+    gap: var(--space-12);
+    max-width: var(--container-wide);
+    margin-inline: auto;
+    padding-inline: var(--container-gutter);
+  }
+  .site-footer__top {
+    display: grid;
+    gap: var(--space-8);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) {
+    .site-footer__top {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-12);
+    }
+  }
+  .foot-col {
+    display: block;
+  }
+  .foot-heading {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: var(--text-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    margin: 0 0 var(--space-4);
+  }
+  .foot-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-2);
+  }
+  .foot-col a {
+    text-decoration: none;
+    color: var(--color-ink);
+    font-size: var(--text-sm);
+    transition: color var(--duration-fast) var(--ease-standard);
+  }
+  .foot-col a:hover {
+    color: var(--color-accent);
+  }
+
+  .foot-tagline {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: var(--color-ink);
+    max-width: 18em;
+    margin: 0;
+  }
+  .foot-sns {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+  }
+  .foot-sns a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    color: var(--color-ink);
+    transition:
+      background var(--duration-fast) var(--ease-standard),
+      color var(--duration-fast) var(--ease-standard),
+      border-color var(--duration-fast) var(--ease-standard);
+  }
+  .foot-sns a:hover {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    border-color: var(--color-ink);
+  }
+
+  .site-footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4) var(--space-6);
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-6);
+    font-size: var(--text-xs);
+    color: var(--color-ink-muted);
+  }
+  .site-footer__bottom p {
+    margin: 0;
+  }
+  .muted { color: var(--color-ink-faint); }
+</style>

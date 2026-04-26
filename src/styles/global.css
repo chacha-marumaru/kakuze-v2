@@ -1,0 +1,222 @@
+/*
+ * KAKUZE Ver2 - global stylesheet (Editorial Light · Sprint 1 確定版)
+ *
+ * このファイルは DESIGN.md の値を CSS 変数として実装する側（値の正本）。
+ * 値を変更したら DESIGN.md の YAML フロントマターと markdown 本文の両方を
+ * 同じコミットで更新すること（CLAUDE.md §4 不変ルール）。
+ */
+
+:root {
+  /* =========================================================================
+   * Color: Paper / Surface (warm off-white)
+   * ========================================================================= */
+  --color-paper:        oklch(98%   0.006 85);
+  --color-paper-deep:   oklch(95.5% 0.010 85);
+  --color-surface:      #ffffff;
+
+  /* =========================================================================
+   * Color: Ink (near-black with slight violet undertone)
+   * ========================================================================= */
+  --color-ink:          oklch(18%   0.014 285);
+  --color-ink-muted:    oklch(40%   0.014 285);
+  --color-ink-faint:    oklch(48%   0.012 285);  /* AA: ~4.7:1 on paper */
+
+  /* =========================================================================
+   * Color: Borders / Rules
+   * ========================================================================= */
+  --color-border:       oklch(88%   0.008 85);
+  --color-rule:         oklch(20%   0.014 285);
+
+  /* =========================================================================
+   * Color: Accent (deep ink indigo)
+   * ========================================================================= */
+  --color-accent:       oklch(38%   0.13 270);
+  --color-accent-soft:  oklch(96%   0.02 270);
+  --color-focus:        oklch(55%   0.18 270);
+  --color-focus-ring:   var(--color-focus);
+
+  /* =========================================================================
+   * Color: Status (muted, journal-like)
+   * ========================================================================= */
+  --color-success:      oklch(58%   0.13 145);
+  --color-warning:      oklch(72%   0.14 75);
+  --color-danger:       oklch(54%   0.18 22);
+  --color-info:         oklch(58%   0.12 235);
+
+  /* =========================================================================
+   * Color: Semantic aliases
+   * ========================================================================= */
+  --color-bg:           var(--color-paper);
+  --color-bg-subtle:    var(--color-paper-deep);
+  --color-text:         var(--color-ink);
+  --color-text-muted:   var(--color-ink-muted);
+  --color-text-subtle:  var(--color-ink-faint);
+
+  /* =========================================================================
+   * Typography
+   * ========================================================================= */
+  --font-display: "Noto Serif JP", "Source Serif Pro", Georgia, serif;
+  --font-body:    "Noto Sans JP",  ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono:    ui-monospace, SFMono-Regular, Consolas, monospace;
+
+  --text-xs:    0.75rem;
+  --text-sm:    0.8125rem;
+  --text-base:  clamp(1rem,     0.95rem + 0.22vw, 1.0625rem);
+  --text-lg:    clamp(1.125rem, 1.06rem + 0.32vw, 1.25rem);
+  --text-xl:    clamp(1.375rem, 1.24rem + 0.55vw, 1.6875rem);
+  --text-2xl:   clamp(1.875rem, 1.55rem + 1.4vw,  2.625rem);
+  --text-3xl:   clamp(2.375rem, 1.85rem + 2.2vw,  3.5rem);
+  --text-hero:  clamp(2.75rem,  1.5rem  + 5.6vw,  6.25rem);
+
+  --leading-tight: 1.15;
+  --leading-snug:  1.35;
+  --leading-base:  1.7;
+  --leading-loose: 1.9;
+
+  /* =========================================================================
+   * Spacing (4px grid)
+   * ========================================================================= */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  --space-section:    clamp(4rem,  3rem + 5vw, 7.5rem);
+  --space-section-sm: clamp(2.5rem, 2rem + 2vw, 4rem);
+
+  /* =========================================================================
+   * Layout
+   * ========================================================================= */
+  --container-tight:  42rem;
+  --container-base:   64rem;
+  --container-wide:   80rem;
+  --container-gutter: clamp(1.25rem, 4vw, 2.5rem);
+
+  /* =========================================================================
+   * Motion
+   * ========================================================================= */
+  --duration-fast:   150ms;
+  --duration-base:   250ms;
+  --duration-slow:   400ms;
+  --ease-standard:   cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.3, 0, 0.3, 1.3);
+
+  /* =========================================================================
+   * Radius
+   * ========================================================================= */
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --radius-lg:   8px;
+  --radius-xl:   12px;
+  --radius-pill: 9999px;
+
+  /* =========================================================================
+   * Elevation (ink-tinted shadows so they sit on paper)
+   * ========================================================================= */
+  --shadow-sm: 0 1px 2px  oklch(20% 0.014 285 / 0.05);
+  --shadow-md: 0 4px 14px oklch(20% 0.014 285 / 0.07);
+  --shadow-lg: 0 16px 40px oklch(20% 0.014 285 / 0.09);
+
+  /* =========================================================================
+   * z-index scale
+   * ========================================================================= */
+  --z-sticky:  20;
+  --z-overlay: 30;
+  --z-modal:   40;
+}
+
+/* ============================================================================
+ * Reset
+ * ============================================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  color: var(--color-text);
+  background:
+    radial-gradient(900px 540px at 92% -10%, oklch(94% 0.014 280 / 0.55), transparent 70%),
+    radial-gradient(700px 420px at -5% 110%, oklch(95% 0.020 70 / 0.45), transparent 70%),
+    var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "palt" 1;
+}
+img, picture, video, canvas, svg { display: block; max-width: 100%; }
+input, button, textarea, select { font: inherit; color: inherit; }
+button { background: none; border: 0; cursor: pointer; padding: 0; }
+p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.015em;
+  color: var(--color-text);
+}
+h1 { font-size: var(--text-hero); letter-spacing: -0.025em; }
+h2 { font-size: var(--text-3xl); letter-spacing: -0.02em; }
+h3 { font-size: var(--text-xl); }
+
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--color-accent); }
+
+/* Tabular numerals for time / XP / dates */
+.tabular { font-feature-settings: "tnum" 1; font-variant-numeric: tabular-nums; }
+
+/* ============================================================================
+ * Focus ring
+ * ============================================================================ */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================================================
+ * Skip link (accessibility)
+ * ============================================================================ */
+.skip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  transform: translateY(-110%);
+  transition: transform var(--duration-base) var(--ease-standard);
+  z-index: var(--z-modal);
+  font-size: var(--text-sm);
+}
+.skip:focus { transform: translateY(0); }
+
+/* ============================================================================
+ * Container utilities
+ * ============================================================================ */
+.container {
+  width: 100%;
+  max-width: var(--container-base);
+  margin-inline: auto;
+  padding-inline: var(--container-gutter);
+}
+.container-tight { max-width: var(--container-tight); }
+.container-wide  { max-width: var(--container-wide); }
+
+/* ============================================================================
+ * Reduced motion
+ * ============================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
