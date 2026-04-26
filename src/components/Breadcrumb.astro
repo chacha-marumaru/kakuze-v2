@@ -1,0 +1,85 @@
+---
+interface Props {
+  items: { label: string; href?: string }[];
+  // 末尾要素は href なし（current page）
+}
+
+const { items } = Astro.props;
+
+// JSON-LD 用の構造化データを生成
+const jsonLdItems = items.map((item, index) => {
+  const entry: Record<string, unknown> = {
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.label,
+  };
+  // 末尾（current page）以外は絶対 URL を付与
+  if (item.href && Astro.site) {
+    entry.item = new URL(item.href, Astro.site).toString();
+  }
+  return entry;
+});
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: jsonLdItems,
+};
+---
+
+<nav aria-label="パンくず">
+  <ol class="breadcrumb">
+    {items.map((item, index) => (
+      <>
+        {index > 0 && (
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+        )}
+        {item.href ? (
+          <li class="breadcrumb__item">
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ) : (
+          <li class="breadcrumb__item breadcrumb__item--current" aria-current="page">
+            {item.label}
+          </li>
+        )}
+      </>
+    ))}
+  </ol>
+</nav>
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+<style>
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+  }
+
+  .breadcrumb__item a {
+    color: var(--color-ink-muted);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-standard);
+  }
+
+  .breadcrumb__item a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .breadcrumb__item--current {
+    color: var(--color-text-subtle);
+  }
+
+  .breadcrumb__sep {
+    color: var(--color-ink-faint);
+    user-select: none;
+  }
+</style>

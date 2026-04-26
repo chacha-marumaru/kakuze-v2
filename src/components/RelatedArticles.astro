@@ -1,0 +1,98 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  currentSlug: string;
+  allPosts: CollectionEntry<'blog'>[];
+  maxCount?: number;
+}
+
+const { currentSlug, allPosts, maxCount = 3 } = Astro.props;
+
+// 現在の記事を除外し、pubDate 降順でソートして最大 maxCount 件取得
+const relatedPosts = allPosts
+  .filter((post) => post.slug !== currentSlug)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, maxCount);
+
+// 日付を日本語形式でフォーマット
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('ja-JP', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+---
+
+<aside class="related-articles">
+  {relatedPosts.length > 0 && (
+    <>
+      <h2 class="related-articles__heading">関連記事</h2>
+      <ul class="related-articles__list">
+        {relatedPosts.map((post) => (
+          <li class="related-articles__item">
+            <a href={`/blog/${post.slug}`} class="related-articles__link">
+              {post.data.title}
+            </a>
+            <time
+              class="related-articles__date"
+              datetime={post.data.pubDate.toISOString()}
+            >
+              {formatDate(post.data.pubDate)}
+            </time>
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+</aside>
+
+<style>
+  .related-articles {
+    margin-block-start: var(--space-12);
+    padding-block-start: var(--space-8);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .related-articles__heading {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-6);
+  }
+
+  .related-articles__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .related-articles__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .related-articles__link {
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-standard);
+  }
+
+  .related-articles__link:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .related-articles__date {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+</style>
