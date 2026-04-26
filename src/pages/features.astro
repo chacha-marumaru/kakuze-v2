@@ -1,0 +1,142 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumb from '~/components/Breadcrumb.astro';
+
+const features = [
+  {
+    icon: '⏱',
+    title: 'クロッキータイマー',
+    description: '0秒〜無制限の柔軟な時間設定。1〜9999万枚まで設定可能。お手本観察・固定画像・画像非表示モード搭載。タイマー中は1秒あたり2XPを獲得できます。',
+    href: '/app',
+  },
+  {
+    icon: '🍅',
+    title: 'ポモドーロタイマー',
+    description: '作業・休憩サイクルを自動管理。集中して練習するための時間管理ツール。ポモドーロ中は1秒あたり1XPが付与されます。',
+    href: '/app',
+  },
+  {
+    icon: '⭐',
+    title: 'XP・レベルアップ',
+    description: '練習するたびにXPを獲得。レベルが上がるほど成長を実感できる達成感。積み上げたXPでレベルが可視化されます。',
+    href: '/app',
+  },
+  {
+    icon: '🏅',
+    title: 'バッジ（117種）',
+    description: '累計枚数・連続日数・時間帯など多彩な条件でバッジを獲得。モチベーション維持に。コレクション要素で練習を続ける楽しさが増します。',
+    href: '/app',
+  },
+  {
+    icon: '🖼',
+    title: '画像管理',
+    description: 'ローカルフォルダ・クラウドURLから画像を読み込み。お気に入りポーズをまとめて練習。JPEGやPNG・WebPに対応しています。',
+    href: '/app',
+  },
+  {
+    icon: '📊',
+    title: '統計・履歴',
+    description: 'セッション履歴・累計枚数・時間帯別集計でいつでも振り返り。継続した練習がデータで確認できます。',
+    href: '/app',
+  },
+];
+---
+<BaseLayout
+  title="機能一覧 | KAKUZE"
+  description="KAKUZEの全機能一覧。タイマー・ポモドーロ・XP・バッジ・画像管理など。"
+>
+  <Breadcrumb items={[{ label: 'ホーム', href: '/' }, { label: '機能一覧' }]} />
+  <div class="features-page container">
+    <h1>KAKUZE の機能</h1>
+    <ul class="features-grid">
+      {features.map(f => (
+        <li class="feature-card">
+          <span class="feature-icon" aria-hidden="true">{f.icon}</span>
+          <h2>{f.title}</h2>
+          <p>{f.description}</p>
+          <a href={f.href} class="btn-primary">試してみる</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+  .features-page {
+    padding-block: var(--space-12) var(--space-16);
+  }
+
+  .features-page h1 {
+    font-size: var(--text-3xl);
+    margin-block-end: var(--space-12);
+  }
+
+  .features-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .feature-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-8);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    transition:
+      box-shadow var(--duration-base) var(--ease-standard),
+      transform var(--duration-base) var(--ease-standard);
+  }
+
+  .feature-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .feature-card h2 {
+    font-size: var(--text-lg);
+    margin: 0;
+  }
+
+  .feature-card p {
+    flex: 1;
+    font-size: var(--text-sm);
+    line-height: var(--leading-base);
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    align-self: flex-start;
+    padding: var(--space-2) var(--space-6);
+    background: var(--color-accent);
+    color: var(--color-paper);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity var(--duration-fast) var(--ease-standard);
+  }
+
+  .btn-primary:hover {
+    opacity: 0.85;
+    color: var(--color-paper);
+  }
+
+  @media (max-width: 600px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
