@@ -1,0 +1,81 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumb from '~/components/Breadcrumb.astro';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "プライバシーポリシー | KAKUZE",
+  "description": "KAKUZEのプライバシーポリシーです。",
+  "url": "https://kakuze-v2.vercel.app/privacy-policy"
+};
+---
+<BaseLayout title="プライバシーポリシー | KAKUZE" description="KAKUZEのプライバシーポリシーです。" jsonLd={jsonLd}>
+  <Breadcrumb items={[{ label: 'ホーム', href: '/' }, { label: 'プライバシーポリシー' }]} />
+  <article class="prose-page">
+    <h1>プライバシーポリシー</h1>
+    <p class="page-date">最終更新: 2026年4月26日</p>
+
+    <h2>1. 個人情報の収集について</h2>
+    <p>
+      KAKUZE（以下「当サイト」）は、通常のページ閲覧において利用者の個人情報を収集しません。
+      ただし、お問い合わせフォームをご利用いただく場合に限り、お名前およびメールアドレスをご入力いただくことがあります。
+      取得した個人情報は、お問い合わせへの回答のみに使用し、その他の目的には一切使用しません。
+      また、ご本人の同意なく第三者に提供することもありません。
+    </p>
+
+    <h2>2. Google Analytics について</h2>
+    <p>
+      当サイトでは、アクセス状況の把握・改善を目的として Google Analytics（GA4）を利用しています。
+      Google Analytics は、Cookie を使用して利用者のアクセス情報（ページビュー、滞在時間、参照元など）を収集します。
+      収集されるデータは匿名化されており、個人を特定する情報は含まれません。
+      Google Analytics によるデータ収集を無効にしたい場合は、
+      <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer" target="_blank">Google アナリティクス オプトアウト アドオン</a>
+      をご利用ください。Google のプライバシーポリシーについては
+      <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">こちら</a>
+      をご参照ください。
+    </p>
+
+    <h2>3. 広告について（Google AdSense）</h2>
+    <p>
+      当サイトでは、Google AdSense による広告を掲載することがあります。
+      Google AdSense は、利用者の興味・関心に基づいたインタレストベース広告を表示するため、Cookie を使用します。
+      Cookie を通じて収集されるデータには、当サイトへのアクセス履歴や広告のクリック情報などが含まれます。
+      インタレストベース広告の設定は、
+      <a href="https://www.google.com/settings/ads" rel="noopener noreferrer" target="_blank">Google 広告設定ページ</a>
+      から変更・無効化できます。詳細は
+      <a href="https://policies.google.com/technologies/ads" rel="noopener noreferrer" target="_blank">Google の広告に関するポリシー</a>
+      をご確認ください。
+    </p>
+
+    <h2>4. お問い合わせフォームについて</h2>
+    <p>
+      当サイトのお問い合わせフォームは、Formspree（<a href="https://formspree.io" rel="noopener noreferrer" target="_blank">formspree.io</a>）を利用しています。
+      フォームを送信した際、入力されたお名前・メールアドレス・メッセージ内容が Formspree のサーバーを経由して当サイト管理者に届きます。
+      送信されたデータは、お問い合わせへの回答目的にのみ使用し、第三者への提供・開示は行いません。
+      Formspree のプライバシーポリシーについては
+      <a href="https://formspree.io/legal/privacy-policy" rel="noopener noreferrer" target="_blank">Formspree 公式サイト</a>
+      をご参照ください。
+    </p>
+
+    <h2>5. Cookie について</h2>
+    <p>
+      Cookie（クッキー）とは、ウェブサイトがブラウザに保存する小さなテキストデータです。
+      当サイトでは Google Analytics および Google AdSense の機能提供のために Cookie を使用しています。
+      Cookie の使用を望まない場合は、ブラウザの設定から Cookie を無効化することが可能です。
+      ただし、Cookie を無効化した場合、一部の機能が正常に動作しなくなる可能性があります。
+      Cookie の管理方法は、ご利用のブラウザのヘルプページをご参照ください。
+    </p>
+
+    <h2>6. プライバシーポリシーの変更</h2>
+    <p>
+      当サイトは、必要に応じて予告なく本プライバシーポリシーを変更することがあります。
+      変更後のポリシーは、このページに掲載した時点より効力を持つものとします。
+      重要な変更がある場合は、このページの「最終更新」日付を更新してお知らせします。
+      定期的にこのページをご確認いただくことをお勧めします。
+    </p>
+
+    <h2>7. お問い合わせ</h2>
+    <p>本プライバシーポリシーに関するご質問やお問い合わせは、<a href="/contact">お問い合わせフォーム</a>よりご連絡ください。</p>
+  </article>
+</BaseLayout>
