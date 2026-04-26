@@ -1,0 +1,243 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumb from '~/components/Breadcrumb.astro';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "へんしゅうちょ",
+  "description": "KAKUZEの運営者。クロッキー練習が好き。",
+  "url": "https://kakuze-v2.vercel.app/about-us"
+};
+---
+
+<BaseLayout
+  title="運営者情報"
+  description="KAKUZE（カクゼ）の運営者情報ページです。サイト運営者のプロフィールや連絡先を掲載しています。"
+  jsonLd={jsonLd}
+>
+  <div class="about-us-container">
+    <Breadcrumb items={[
+      { label: 'ホーム', href: '/' },
+      { label: '運営者情報' },
+    ]} />
+
+    <article class="about-us-article">
+      <header class="about-us-header">
+        <p class="about-us-header__eyebrow">ABOUT US</p>
+        <h1 class="about-us-header__title">運営者情報</h1>
+      </header>
+
+      {/* ⚠️ TODO: 実際の運営者プロフィール画像を /public/images/author-avatar.png に配置すること */}
+      <section class="author-profile" aria-label="運営者プロフィール">
+        <div class="avatar-placeholder" aria-hidden="true">へ</div>
+        <div class="author-profile__body">
+          {/* ⚠️ TODO: 運営者の本名またはペンネームに差し替えること */}
+          <h2 class="author-profile__name">へんしゅうちょ</h2>
+          {/* ⚠️ TODO: 自己紹介文を実際の内容に差し替えること（100字以上推奨） */}
+          <p class="author-profile__bio">
+            KAKUZEの運営者。クロッキー・イラスト練習が好きで、毎日タイマーを使って短時間スケッチを続けています。
+            「楽しく継続できるお絵描き環境をつくりたい」という思いからKAKUZEを制作しました。
+          </p>
+          <ul class="social-links">
+            {/* ⚠️ TODO: 実際のSNSアカウントURLに差し替えること */}
+            <li><a href="https://twitter.com/placeholder" target="_blank" rel="noopener noreferrer" class="social-links__link">X (Twitter)</a></li>
+            <li><a href="https://github.com/placeholder" target="_blank" rel="noopener noreferrer" class="social-links__link">GitHub</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="about-us-section">
+        <h2 class="about-us-section__heading">サイトについて</h2>
+        <p>
+          KAKUZEは、クロッキーとポモドーロテクニックを組み合わせた
+          お絵描き練習補助ツールです。タイマーで練習時間を管理しながら
+          XP（経験値）を積み上げることで、毎日の継続をサポートします。
+        </p>
+        <p>
+          本サイトは個人が運営しており、特定の企業・団体とは関係ありません。
+          掲載情報は執筆時点のものであり、予告なく変更される場合があります。
+        </p>
+      </section>
+
+      <section class="about-us-section">
+        <h2 class="about-us-section__heading">お問い合わせ</h2>
+        <p>
+          ご意見・ご要望・不具合報告などは、
+          {/* ⚠️ TODO: SNSアカウントURLを実際のものに差し替えること */}
+          X (Twitter) の DM または<a href="/contact">お問い合わせフォーム</a>よりご連絡ください。
+        </p>
+      </section>
+
+      <section class="about-us-section">
+        <h2 class="about-us-section__heading">免責事項</h2>
+        <p>
+          本サイトの情報は可能な限り正確な情報を掲載するよう努めていますが、
+          正確性・安全性・有用性を保証するものではありません。
+          本サイトのご利用により生じたいかなる損害についても、
+          運営者は責任を負いかねますのであらかじめご了承ください。
+        </p>
+      </section>
+
+      <section class="about-us-section">
+        <h2 class="about-us-section__heading">著作権について</h2>
+        <p>
+          本サイト上の文章・画像・デザイン等の著作権は運営者に帰属します。
+          無断での転載・複製は禁止しています。
+          引用の際は出典（サイト名および URL）を明記してください。
+        </p>
+      </section>
+
+    </article>
+  </div><!-- /.about-us-container -->
+</BaseLayout>
+
+<style>
+  .about-us-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-6) var(--space-16);
+  }
+
+  /* ---- header ---- */
+  .about-us-header {
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-12);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-8);
+  }
+
+  .about-us-header__eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    color: var(--color-text-subtle);
+    text-transform: uppercase;
+    margin: 0 0 var(--space-4);
+  }
+
+  .about-us-header__title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 900;
+    line-height: var(--leading-snug);
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  /* ---- author profile ---- */
+  .author-profile {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-6);
+    padding: var(--space-8);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-12);
+  }
+
+  @media (max-width: 600px) {
+    .author-profile {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  .avatar-placeholder {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    user-select: none;
+  }
+
+  .author-profile__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .author-profile__name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-lg);
+    color: var(--color-ink);
+    margin: 0 0 var(--space-3);
+  }
+
+  .author-profile__bio {
+    font-size: var(--text-base);
+    line-height: var(--leading-base);
+    color: var(--color-text-muted);
+    margin: 0 0 var(--space-4);
+  }
+
+  /* ---- social links ---- */
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .social-links {
+      justify-content: center;
+    }
+  }
+
+  .social-links__link {
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: opacity var(--duration-fast) var(--ease-standard);
+  }
+
+  .social-links__link:hover {
+    opacity: 0.75;
+    text-decoration: underline;
+  }
+
+  /* ---- sections ---- */
+  .about-us-article {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .about-us-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-bottom: var(--space-12);
+  }
+
+  .about-us-section__heading {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-ink);
+    margin: 0;
+    padding-bottom: var(--space-2);
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .about-us-section p {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: var(--leading-loose);
+    color: var(--color-text);
+    margin: 0;
+  }
+</style>
