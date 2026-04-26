@@ -3,18 +3,28 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import Breadcrumb from '~/components/Breadcrumb.astro';
 import AuthorCard from '~/components/AuthorCard.astro';
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "クロッキーとは？絵の上達に効果的な短時間スケッチ練習法",
-  "description": "クロッキーの語源・歴史・効果・正しい練習方法を徹底解説します。",
-  "datePublished": "2026-04-26",
-  "author": {
-    "@type": "Person",
-    "name": "へんしゅうちょ",
-    "url": "https://kakuze-v2.vercel.app/about-us"
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "クロッキーとは？絵の上達に効果的な短時間スケッチ練習法",
+    "description": "クロッキーの語源・歴史・効果・正しい練習方法を徹底解説します。",
+    "datePublished": "2026-04-26",
+    "author": {
+      "@type": "Person",
+      "name": "へんしゅうちょ",
+      "url": "https://kakuze-v2.vercel.app/about-us"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://kakuze-v2.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "クロッキーとは" }
+    ]
   }
-};
+];
 ---
 
 <BaseLayout
