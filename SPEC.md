@@ -10,8 +10,8 @@
 |------|--------|------|
 | Astro 雛形・基本レイアウト | 0 | ✅ 完了 |
 | Editorial Light デザイン適用（DESIGN.md 確定 + トップページ） | 1 | ✅ 完了（2026-04-26） |
-| 静的ページ群（法令・運営者・guide・about・features・contact） | 2 | ⏳ 未着手 |
-| Content Collections（記事 MDX） | 2 | ⏳ 未着手 |
+| 静的ページ群（法令・運営者・guide・about・features・contact） | 2 | ✅ 完了（2026-04-27） |
+| Content Collections（記事 MDX） | 2 | ✅ 完了（2026-04-27、ダミー記事3本） |
 | クロッキータイマーコア | 3 | ⏳ 未着手 |
 | ポモドーロ | 3 | ⏳ 未着手 |
 | XP / レベル / バッジ | 3 | ⏳ 未着手 |
@@ -30,15 +30,15 @@
 | `/app` | アプリ（Island） | `src/pages/app/index.astro` | × | ⏳ |
 | `/app/pomodoro` | アプリ（Island） | `src/pages/app/pomodoro.astro` | × | ⏳ |
 | `/app/gallery` | アプリ（Island） | `src/pages/app/gallery.astro` | × | ⏳ |
-| `/blog` | 一覧 | `src/pages/blog/index.astro` | ○ | ⏳ |
-| `/blog/[slug]` | 動的 | `src/pages/blog/[slug].astro` | ○ | ⏳ |
-| `/guide` | 静的 | `src/pages/guide.astro` | ○ | ⏳ |
-| `/features` | 静的 | `src/pages/features.astro` | ○ | ⏳ |
-| `/about` | 静的 | `src/pages/about.astro` | ○ | ⏳ |
-| `/about-us` | 静的 | `src/pages/about-us.astro` | ○ | ⏳ |
-| `/contact` | 静的+フォーム | `src/pages/contact.astro` | × | ⏳ |
-| `/privacy-policy` | 静的 | `src/pages/privacy-policy.astro` | × | ⏳ |
-| `/terms` | 静的 | `src/pages/terms.astro` | × | ⏳ |
+| `/blog` | 一覧 | `src/pages/blog/index.astro` | ○ | ✅ Breadcrumb + CollectionPage JSON-LD |
+| `/blog/[slug]` | 動的 | `src/pages/blog/[slug].astro` | ○ | ✅ AuthorCard + RelatedArticles + Article/BreadcrumbList JSON-LD |
+| `/guide` | 静的 | `src/pages/guide.astro` | ○ | ✅ Breadcrumb + WebPage JSON-LD |
+| `/features` | 静的 | `src/pages/features.astro` | ○ | ✅ Breadcrumb + 6機能カード |
+| `/about` | 静的 | `src/pages/about.astro` | ○ | ✅ AuthorCard + Article/BreadcrumbList JSON-LD（2000字以上） |
+| `/about-us` | 静的 | `src/pages/about-us.astro` | ○ | ✅ Person JSON-LD + TODOプレースホルダー |
+| `/contact` | 静的+フォーム | `src/pages/contact.astro` | × | ✅ Formspreeプレースホルダー付きフォーム |
+| `/privacy-policy` | 静的 | `src/pages/privacy-policy.astro` | × | ✅ WebPage JSON-LD |
+| `/terms` | 静的 | `src/pages/terms.astro` | × | ✅ WebPage JSON-LD |
 | `/sitemap-index.xml` | 自動生成 | `@astrojs/sitemap` | — | ✅ |
 | `/robots.txt` | 静的 | `public/robots.txt` | — | ✅ |
 
@@ -51,7 +51,7 @@
   - ✅ JSON-LD注入スロット
   - ✅ noindex プロパティ
   - ✅ スキップリンク（a11y）
-  - ⏳ パンくず（Sprint 2 で `Breadcrumb.astro` 追加予定）
+  - ✅ パンくず（`Breadcrumb.astro` — Sprint 2 完了）
 
 ## 2. クロッキータイマー（Sprint 3）
 

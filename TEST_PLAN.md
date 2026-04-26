@@ -1,5 +1,47 @@
 # KAKUZE Ver2 テスト計画
 
+## Sprint 2 検証ログ（2026-04-27）
+
+静的ページ群・ブログシステム・共通コンポーネントの検証結果。
+
+### 自動チェック（実施済）
+- [x] `npm run type-check` — 0 errors / 0 warnings / 0 hints（全19ファイル）
+- [x] `npm run build` — 静的ビルド成功
+- [x] 全5PR（#2, #7, #8, #9, #10）マージ完了
+
+### コンポーネント検証（目視・コードレビュー）
+- [x] `Breadcrumb.astro` — BreadcrumbList JSON-LD + aria-current + aria-hidden セパレータ ✓
+- [x] `AuthorCard.astro` — CSS-only avatar fallback（z-index重ね）✓
+- [x] `RelatedArticles.astro` — 0件時の空 `<aside>` ランドマーク問題を修正済み ✓
+
+### ページ検証（コードレビュー）
+- [x] `/blog` — CollectionPage JSON-LD + Breadcrumb + pubDate降順ソート ✓
+- [x] `/blog/[slug]` — Article + BreadcrumbList JSON-LD + AuthorCard + RelatedArticles ✓
+- [x] `/about` — Article + BreadcrumbList JSON-LD + AuthorCard + 2000字以上 ✓
+- [x] `/about-us` — Person JSON-LD + TODOプレースホルダー + /contact リンク ✓
+- [x] `/guide` — WebPage JSON-LD + Breadcrumb + FAQ ✓
+- [x] `/features` — Breadcrumb + 6機能カード（emoji アイコン）✓
+- [x] `/contact` — Formspree プレースホルダー + アクセシブルなフォーム ✓
+- [x] `/privacy-policy` — WebPage JSON-LD + 全7セクション ✓
+- [x] `/terms` — WebPage JSON-LD + 全7条 ✓
+
+### Lighthouse 計測（ユーザー実施・モバイル）
+代表3ページで計測。
+- [ ] `/` → Performance: ___ / SEO: ___ / A11y: ___ / BP: ___
+- [ ] `/blog/croquiswhat` → Performance: ___ / SEO: ___ / A11y: ___ / BP: ___
+- [ ] `/about-us` → Performance: ___ / SEO: ___ / A11y: ___ / BP: ___
+
+### JSON-LD 確認（ユーザー実施・Google Rich Results Test）
+- [ ] `/blog/croquiswhat` — Article + BreadcrumbList + Person が valid
+- [ ] `/about` — Article + BreadcrumbList が valid
+
+### TODO（ユーザーが後から入力）
+- [ ] `/about-us` の運営者名・bio・SNSリンクを実際の内容に差し替え
+- [ ] `/contact` の Formspree URL を実際のエンドポイントに差し替え
+- [ ] 記事の pubDate を 2026年の正しい日付に修正（現在は 2025-04-xx）
+
+---
+
 ## Sprint 1 検証ログ（2026-04-26）
 
 Editorial Light デザイン適用の検証結果。Lighthouse はユーザー側の Chrome DevTools で実機計測する。
